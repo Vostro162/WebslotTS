@@ -89,13 +89,14 @@ export class HTTPProvider {
     urlComponents: string[]
     request: __http.IncomingMessage
     responds: __http.ServerResponse
+    config: __configInterface.Config
 
     cookieManager: __cookieManager.CookieManager
     sessionManager: __sessionManager.SessionManager
+
     protected httpAuth: __httpAuth.HTTPAuth
     protected timeoutTimerID: number
     protected contentType: string
-    protected config: __configInterface.Config
 
     constructor(config: __configInterface.Config) {
         this.config = config

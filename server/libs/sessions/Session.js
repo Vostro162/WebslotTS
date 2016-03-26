@@ -16,6 +16,9 @@ var Session = (function () {
     Session.prototype.addValue = function (key, value) {
         this.data[key] = value;
     };
+    Session.prototype.getValue = function (key) {
+        return this.data[key];
+    };
     Session.prototype.createSessionId = function () {
         return __utilities.Utilities.createUUID(null);
     };

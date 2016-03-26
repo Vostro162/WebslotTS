@@ -25,7 +25,7 @@ export class SessionManager implements SessionManagerInterface {
     sessions: {} = {}
 
     protected intervalID: number
-    protected objectSaver: __objectSaver.ObjectSaver = new __objectSaver.ObjectSaver(this.sessionFolderPath, this.fileEncoding)
+    protected objectSaver: __objectSaver.ObjectSaver
 
     constructor(params: SessionManagerInterface) {
         this.cookieExpire = params.cookieExpire;
@@ -33,27 +33,28 @@ export class SessionManager implements SessionManagerInterface {
         this.sessionFolderPath = params.sessionFolderPath;
         this.fileEncoding = params.fileEncoding;
         this.session = params.session;
+        this.objectSaver = new __objectSaver.ObjectSaver(this.sessionFolderPath, this.fileEncoding)
         if (params.sessions) { this.sessions = params.sessions }
     }
 
     startSession(cookieManager: __cookieManager.CookieManager): void {
         this.session = this.createSession();
-        cookieManager.addCookie(this.createSessionCookie());
+        cookieManager.addCookie(this.createSessionCookie())
     }
 
     save(): void {
-        this.objectSaver.save(this.session.sessionId, this.session);
+        console.log("hir bin ich")
+        console.log(this.session.sessionId)
+        //this.objectSaver.save(this.session.sessionId, this.session)
     }
 
     createSession(): __session.Session {
 
-        let session = function() {
-            return new __session.Session({
+        let session =  new __session.Session({
                 expire: this.sessionExpire,
                 folderPath: this.sessionFolderPath,
                 fileEncoding: this.fileEncoding
-            })
-        } ()
+        })
 
 
         var isOkay = false

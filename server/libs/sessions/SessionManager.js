@@ -6,12 +6,12 @@ var __fs = require("fs");
 var SessionManager = (function () {
     function SessionManager(params) {
         this.sessions = {};
-        this.objectSaver = new __objectSaver.ObjectSaver(this.sessionFolderPath, this.fileEncoding);
         this.cookieExpire = params.cookieExpire;
         this.sessionExpire = params.sessionExpire;
         this.sessionFolderPath = params.sessionFolderPath;
         this.fileEncoding = params.fileEncoding;
         this.session = params.session;
+        this.objectSaver = new __objectSaver.ObjectSaver(this.sessionFolderPath, this.fileEncoding);
         if (params.sessions) {
             this.sessions = params.sessions;
         }
@@ -21,16 +21,15 @@ var SessionManager = (function () {
         cookieManager.addCookie(this.createSessionCookie());
     };
     SessionManager.prototype.save = function () {
-        this.objectSaver.save(this.session.sessionId, this.session);
+        console.log("hir bin ich");
+        console.log(this.session.sessionId);
     };
     SessionManager.prototype.createSession = function () {
-        var session = function () {
-            return new __session.Session({
-                expire: this.sessionExpire,
-                folderPath: this.sessionFolderPath,
-                fileEncoding: this.fileEncoding
-            });
-        }();
+        var session = new __session.Session({
+            expire: this.sessionExpire,
+            folderPath: this.sessionFolderPath,
+            fileEncoding: this.fileEncoding
+        });
         var isOkay = false;
         while (isOkay == false) {
             var sessionFilePath = this.sessionFolderPath + "/" + session.sessionId + ".json";

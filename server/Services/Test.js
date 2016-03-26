@@ -40,6 +40,16 @@ var Test = (function () {
         return setupController(this, "Test");
     };
     Test.prototype.sessionTest = function () {
+        if (this.provider.sessionManager.session == null || this.provider.sessionManager.session == undefined) {
+            console.log("create session");
+            this.provider.sessionManager.startSession(this.provider.cookieManager);
+            this.provider.sessionManager.session.addValue("name", "Marius");
+            this.provider.sessionManager.save();
+        }
+        if (this.provider.sessionManager.session) {
+            return this.provider.sessionManager.session.getValue("name");
+        }
+        return "keine session vorhanden";
     };
     return Test;
 }());

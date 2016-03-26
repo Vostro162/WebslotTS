@@ -40,26 +40,23 @@ export class Test implements __serviceInterface.ServiceInterface {
     cookieTest(): string {
 
 
-        if(!this.provider.cookieManager.cookies["user2"]) {
-          console.log("create cookie");
-          var cookie = new __cookie.Cookie({
-              cookieName: "user2",
-              expire: new Date(Date.now() + (60000 * 1)).toUTCString(),
-              httpOnly: true
-          })
+        if (!this.provider.cookieManager.cookies["user2"]) {
+            console.log("create cookie");
+            var cookie = new __cookie.Cookie({
+                cookieName: "user2",
+                expire: new Date(Date.now() + (60000 * 1)).toUTCString(),
+                httpOnly: true
+            })
 
-          cookie.addValue("username", "Marius")
-          cookie.addValue("userid", "44758539339")
-          this.provider.cookieManager.addCookie(cookie)
+            cookie.addValue("username", "Marius")
+            cookie.addValue("userid", "44758539339")
+            this.provider.cookieManager.addCookie(cookie)
 
         }
 
-          console.log(this.provider.cookieManager.cookies)
+        console.log(this.provider.cookieManager.cookies)
 
-          return this.provider.cookieManager.cookies["user2"].getValue("username")
-
-
-
+        return this.provider.cookieManager.cookies["user2"].getValue("username")
 
     }
 
@@ -68,12 +65,18 @@ export class Test implements __serviceInterface.ServiceInterface {
     }
 
     sessionTest() {
-      /*if(this.provider.sessionManager.session == null || this.provider.sessionManager.session == undefined) {
-    console.log("create session");
-      this.provider.sessionManager.startSession(this.provider.cookieManager);
-      this.provider.sessionManager.session.addValue("name","Marius");
-      this.provider.sessionManager.save();
-  }*/
+        if (this.provider.sessionManager.session == null || this.provider.sessionManager.session == undefined) {
+            console.log("create session");
+            this.provider.sessionManager.startSession(this.provider.cookieManager);
+            this.provider.sessionManager.session.addValue("name", "Marius");
+            this.provider.sessionManager.save();
+        }
+
+        if(this.provider.sessionManager.session) {
+          return this.provider.sessionManager.session.getValue("name")
+        }
+
+        return "keine session vorhanden"
     }
 
 }

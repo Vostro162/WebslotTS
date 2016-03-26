@@ -25,8 +25,12 @@ export class Session implements SessionInterface {
     if(params.data) { this.data = params.data }
   }
 
-  addValue(key, value) : void {
+  addValue(key : string, value : any) : void {
     this.data[key] = value
+  }
+
+  getValue(key : string) : any {
+    return this.data[key];
   }
 
   createSessionId() : string {
