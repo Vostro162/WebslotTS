@@ -48,7 +48,8 @@ var Utilities = (function () {
         var chars = "qwertzuiopasdfghjklyxcvbnm";
         var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
         var resultString = "";
-        for (var char in patternString.split("")) {
+        for (var _i = 0, _a = patternString.split(""); _i < _a.length; _i++) {
+            var char = _a[_i];
             var isUppercase = Utilities.getRandomInt(0, 2);
             var isChar = Utilities.getRandomInt(0, 2);
             if (char == "#") {

@@ -21,8 +21,7 @@ var SessionManager = (function () {
         cookieManager.addCookie(this.createSessionCookie());
     };
     SessionManager.prototype.save = function () {
-        console.log("hir bin ich");
-        console.log(this.session.sessionId);
+        this.objectSaver.save(this.session.sessionId, this.session);
     };
     SessionManager.prototype.createSession = function () {
         var session = new __session.Session({

@@ -64,7 +64,7 @@ export class Utilities {
         let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
         var resultString = "";
 
-        for (let char in patternString.split("")) {
+        for (let char of patternString.split("")) {
 
             let isUppercase = Utilities.getRandomInt(0, 2);
             let isChar = Utilities.getRandomInt(0, 2);

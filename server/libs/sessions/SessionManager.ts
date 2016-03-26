@@ -43,9 +43,7 @@ export class SessionManager implements SessionManagerInterface {
     }
 
     save(): void {
-        console.log("hir bin ich")
-        console.log(this.session.sessionId)
-        //this.objectSaver.save(this.session.sessionId, this.session)
+        this.objectSaver.save(this.session.sessionId, this.session)
     }
 
     createSession(): __session.Session {
