@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <!--- <link href="Test.css" rel="stylesheet"> -->
+  </head>
+  <body>
+    <b>Hallo</b>
+
+    <b>
+    <?vs vars.username = "Marius"; ?>
+    <?vs return viewLoader.importContent("Test/Test2"); ?>
+    <br/>
+    <?vs return model.text; ?>
+    <br/>
+      <?vs return ":D"; ?>
+  </b>
+  </body>
+</html>

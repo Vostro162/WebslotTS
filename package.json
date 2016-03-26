@@ -1,0 +1,26 @@
+{
+  "name": "webslot",
+  "version": "1.0.0",
+  "description": "simple NodeJS Server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vostro162/OOD.git"
+  },
+  "keywords": [
+    "simple",
+    "nodejs",
+    "server",
+    "php",
+    "apache"
+  ],
+  "author": "Marius Hartig <mh@marius-hartig.de> (http://marius-hartig.de)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vostro162/OOD/issues"
+  },
+  "homepage": "https://github.com/Vostro162/OOD#readme"
+}
