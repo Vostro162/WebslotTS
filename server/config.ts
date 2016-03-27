@@ -22,7 +22,8 @@ export class Config implements __configInterface.Config {
   services =  {
     caching: false,
     callOnlyMain: [
-      "JSD"
+      "JSD",
+      "Pages"
     ]
   }
 

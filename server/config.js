@@ -16,7 +16,8 @@ var Config = (function () {
         this.services = {
             caching: false,
             callOnlyMain: [
-                "JSD"
+                "JSD",
+                "Pages"
             ]
         };
         this.servicesPath = __dirname + "/Services/";
