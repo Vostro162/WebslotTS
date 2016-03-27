@@ -7,7 +7,7 @@ export class Pages implements __serviceInterface.ServiceInterface {
   provider: __provider.HTTPProvider
   paramters: any
 
-  main(name): string {
+  main(...path): string {
 
     let viewLoader = new __viewLoader.ViewLoader({
         controller: this,
@@ -15,10 +15,10 @@ export class Pages implements __serviceInterface.ServiceInterface {
         model: this.paramters
     });
 
-    viewLoader.load(name);
+    viewLoader.load(path.join("/"));
     viewLoader.parse();
     return viewLoader.viewContent;
-    
+
   }
 
 }
