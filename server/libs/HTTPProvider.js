@@ -229,12 +229,12 @@ var HTTPProvider = (function () {
         if (serviceName == "" && this.config.callMainService) {
             serviceName = "Main";
         }
-        var servicePath = this.config.servicesPath + serviceName + ".js";
+        var servicePath = this.config.servicesPath + serviceName + "/" + serviceName + ".js";
         this.httpAuth.realm = this.config.httpAuth.realm + " " + serviceName;
-        var auth = this.httpAuth.login(this.config.servicesPath, serviceName);
+        var auth = this.httpAuth.login(this.config.servicesPath + serviceName + "/", serviceName);
         if (auth) {
             if (__fs.existsSync(servicePath)) {
-                return this.callService(serviceName);
+                return this.callService(serviceName, servicePath);
             }
         }
     };
@@ -245,9 +245,8 @@ var HTTPProvider = (function () {
             provider.responds.end(JSON.stringify({ error: { message: "error", code: 400 } }));
         }, eval(this.config.timeout));
     };
-    HTTPProvider.prototype.callService = function (serviceName) {
+    HTTPProvider.prototype.callService = function (serviceName, servicePath) {
         var params = this.urlComponents.slice(2, this.urlComponents.length);
-        var servicePath = this.config.servicesPath + serviceName + ".js";
         console.log("Call Service ( " + servicePath + " ) with Methode " + this.request.method);
         if (!this.config.services.caching) {
             delete require.cache[require.resolve(servicePath)];

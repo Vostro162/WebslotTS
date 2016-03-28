@@ -363,14 +363,14 @@ export class HTTPProvider {
             serviceName = "Main"
         }
 
-        var servicePath = this.config.servicesPath + serviceName + ".js"
+        var servicePath = this.config.servicesPath + serviceName + "/" + serviceName + ".js"
 
         this.httpAuth.realm = this.config.httpAuth.realm + " " + serviceName
-        let auth = this.httpAuth.login(this.config.servicesPath, serviceName)
+        let auth = this.httpAuth.login(this.config.servicesPath + serviceName + "/", serviceName)
 
         if (auth) {
             if (__fs.existsSync(servicePath)) {
-                return this.callService(serviceName)
+                return this.callService(serviceName, servicePath)
             }
         }
     }
@@ -383,10 +383,9 @@ export class HTTPProvider {
         }, eval(this.config.timeout))
     }
 
-    callService(serviceName: string): string {
+    callService(serviceName: string, servicePath : string): string {
 
         var params = this.urlComponents.slice(2, this.urlComponents.length)
-        let servicePath = this.config.servicesPath + serviceName + ".js"
 
         console.log("Call Service ( " + servicePath + " ) with Methode " + this.request.method)
 
